@@ -2,11 +2,10 @@
 // import checkLoginStatus from './helpers/auth';
 import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
-import renderToDom from './components/DOM/renderToDOM';
+// import renderToDom from './components/DOM/renderToDOM';
 
 const init = () => {
-
-  renderToDom();
+  // renderToDom();
 
   document.querySelector('#app').innerHTML = `
     <h1>HELLO! You are up and running!</h1>
@@ -21,8 +20,6 @@ const init = () => {
   document
     .querySelector('#click-me')
     .addEventListener('click', () => console.warn('You clicked that button!'));
-
-
 };
 
 init();
