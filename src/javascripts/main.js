@@ -8,7 +8,9 @@ const renderToDom = (divId, textToPrint) => {
 
 const greetingHeader = () => {
   const domString = `
+  <div class="business-box" id="business-container">
   <div>Active Accounts</div>
+  </div>
   `;
   console.warn(domString);
   renderToDom('#welcome-title', domString);
