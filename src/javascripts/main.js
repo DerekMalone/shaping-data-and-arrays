@@ -18,7 +18,6 @@ const greetingHeader = () => {
   <div id="accounts-container"></div>
   </div>
   `;
-  console.warn(domString);
   renderToDom('#welcome-title', domString);
 };
 
@@ -39,21 +38,24 @@ const activeAcounts = (array) => {
   });
 };
 
-const filterBuisnessForm = (e) => {
-  e.preventDefault();
+const filtereredBusinesses = (e) => {
+  const searchItem = document.querySelector('#filter-input-field').addEventListener('keyup', (e));
+  console.warn(e.target.value);
+  searchItem.filter((item) => item.toUpperCase.value === item.toUpperCase);
+  console.warn(searchItem);
+};
+
+const filterBuisnessForm = () => {
   console.warn('Clicked');
   const domString = `
   <div class="input-group mb-3">
   <label for="filter-input-field">Search:</label>
   <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
   <input type="text" class="form-control" id="filter-input-field" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
+  </div>
   `;
   renderToDom('#business-container', domString);
-};
-
-const filtereredBusinesses = () => {
-  console.warn('connected');
+  filtereredBusinesses();
 };
 
 // const currentBusinesses = (array) => {
@@ -73,7 +75,6 @@ const filtereredBusinesses = () => {
 
 const domEvents = () => {
   document.querySelector('#filter-btn').addEventListener('click', filterBuisnessForm);
-  document.querySelector('#filter-input-field').addEventListener('keyup', filtereredBusinesses);
   // document.querySelector().addEventListener();
 };
 
