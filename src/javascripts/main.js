@@ -13,6 +13,7 @@ const greetingHeader = () => {
   <div class="business-box" id="business-container">
   <div class="accounts-container">
   <h2>Active Accounts</h2>
+  <button type="button" id="filter-btn">Filter</button>
   </div>
   <div id="accounts-container"></div>
   </div>
@@ -38,6 +39,23 @@ const activeAcounts = (array) => {
   });
 };
 
+const filterBuisnessForm = (e) => {
+  e.preventDefault();
+  console.warn('Clicked');
+  const domString = `
+  <div class="input-group mb-3">
+  <label for="filter-input-field">Search:</label>
+  <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+  <input type="text" class="form-control" id="filter-input-field" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+  `;
+  renderToDom('#business-container', domString);
+};
+
+const filtereredBusinesses = () => {
+  console.warn('connected');
+};
+
 // const currentBusinesses = (array) => {
 //   let element = '';
 //   array.forEach((taco) => {
@@ -53,16 +71,16 @@ const activeAcounts = (array) => {
 //   });
 // };
 
-// const domEvents = () => {
-//   document.querySelector().addEventListener();
-//   document.querySelector().addEventListener();
-//   document.querySelector().addEventListener();
-// };
+const domEvents = () => {
+  document.querySelector('#filter-btn').addEventListener('click', filterBuisnessForm);
+  document.querySelector('#filter-input-field').addEventListener('keyup', filtereredBusinesses);
+  // document.querySelector().addEventListener();
+};
 
 const init = () => {
   // currentBusinesses(businesses);
   greetingHeader();
-  // domEvents();
+  domEvents();
   activeAcounts(businesses);
 };
 
