@@ -18,7 +18,6 @@ const greetingHeader = () => {
   <div id="accounts-container"></div>
   </div>
   `;
-  console.warn(domString);
   renderToDom('#welcome-title', domString);
 };
 
@@ -39,22 +38,24 @@ const activeAcounts = (array) => {
   });
 };
 
-const filterBuisnessForm = (e) => {
-  e.preventDefault();
-  console.warn('Clicked');
-  const domString = `
-  <div class="input-group mb-3">
-  <label for="filter-input-field">Search:</label>
-  <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-  <input type="text" class="form-control" id="filter-input-field" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-  `;
-  renderToDom('#business-container', domString);
+const filtereredBusinesses = (array) => {
+  const locationsInNY = array.filter((arr) => arr.addressStateCode === 'NY');
+  console.warn(locationsInNY);
+  activeAcounts(locationsInNY);
 };
 
-const filtereredBusinesses = () => {
-  console.warn('connected');
-};
+// const searchBuisnessForm = () => {
+//   console.warn('Clicked');
+//   const domString = `
+//   <div class="input-group mb-3">
+//   <label for="filter-input-field">Search:</label>
+//   <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+//   <input type="text" class="form-control" id="filter-input-field" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+//   </div>
+//   `;
+//   renderToDom('#business-container', domString);
+//   filtereredBusinesses();
+// };
 
 // const currentBusinesses = (array) => {
 //   let element = '';
@@ -72,8 +73,7 @@ const filtereredBusinesses = () => {
 // };
 
 const domEvents = () => {
-  document.querySelector('#filter-btn').addEventListener('click', filterBuisnessForm);
-  document.querySelector('#filter-input-field').addEventListener('keyup', filtereredBusinesses);
+  // document.querySelector('#filter-btn').addEventListener('click', filterBuisnessForm);
   // document.querySelector().addEventListener();
 };
 
@@ -81,7 +81,8 @@ const init = () => {
   // currentBusinesses(businesses);
   greetingHeader();
   domEvents();
-  activeAcounts(businesses);
+  // activeAcounts(businesses);
+  filtereredBusinesses(businesses);
 };
 
 init();
