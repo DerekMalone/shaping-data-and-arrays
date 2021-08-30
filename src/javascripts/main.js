@@ -36,22 +36,22 @@ const activeAcounts = (array) => {
      <button type="button" id="${i}"></button>
     </div>
     `;
+    domString += '<hr/>';
     renderToDom('#accounts-container', domString);
   });
 };
 
 const onlyAgents = (array) => {
   const agents = array.map((business) => business.purchasingAgent);
+  console.table(agents);
+  let domString = '<h3>Agents:</h3>';
   agents.forEach((agent) => {
-    let domString = '';
     domString += `
     <div>
-    <div>
-    <h2>Purchasing Agent:</h2>
-    </div>
     <div>${agent.nameFirst} ${agent.nameLast}</div>
     </div>
     `;
+    domString += '<hr/>';
     renderToDom('#agents-container', domString);
   });
 };
@@ -70,6 +70,7 @@ const nyBusinesses = (array) => {
      <button type="button" id="${i}"></button>
     </div>
     `;
+    domString += '<hr/>';
     renderToDom('#ny-accounts-container', domString);
   });
 };
