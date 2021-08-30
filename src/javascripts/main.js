@@ -11,6 +11,7 @@ const renderToDom = (divId, textToPrint) => {
 const greetingHeader = () => {
   const domString = `
   <div class="business-box" id="business-container">
+  <input type="text" placeholder="Enter business name" id="companySearch" />
   <div class="accounts-container">
   <h2>Active Accounts</h2>
   <button type="button" class="filter-btn" id="filter-btn">Filter</button>
@@ -61,7 +62,7 @@ const nyBusinesses = (array) => {
   array.forEach((element, i) => {
     domString += `
     <div>
-    <h3>NY Businesses</h3>
+    <h3>NY Businesses:</h3>
      <div class="biz-container">
       <h3 id="biz-name">${element.companyName}</h3>
      </div>
@@ -80,14 +81,35 @@ const filtereredBusinesses = (array) => {
   nyBusinesses(locationsInNY);
 };
 
-// const domEvents = () => {
-//   // document.querySelector('#filter-btn').addEventListener('click', filtereredBusinesses(array));
-//   // document.querySelector().addEventListener();
-// };
+const domEvents = () => {
+  document.querySelector('#companySearch').addEventListener('keyup', (keyPressEvent) => {
+    // if (keyPressEvent.value === 13) {
+    const foundBusiness = businesses.find(
+      (business) => business.companyName.includes(keyPressEvent.target.value)
+    );
+    let domString = `
+      <h2>
+      ${foundBusiness.companyName}
+      </h2>
+      <section>
+      ${foundBusiness.addressFullStreet}
+
+      </section>
+      <section>
+      ${foundBusiness.addressCity},
+      ${foundBusiness.addressStateCode}
+      ${foundBusiness.addressZipCode}
+      </section>
+  `;
+    domString += '<hr/>';
+    renderToDom('#accounts-container', domString);
+    // }
+  });
+};
 
 const init = () => {
   greetingHeader();
-  // domEvents();
+  domEvents();
   activeAcounts(businesses);
 
   filtereredBusinesses(businesses);
