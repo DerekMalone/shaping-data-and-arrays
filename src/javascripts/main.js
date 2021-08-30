@@ -16,6 +16,7 @@ const greetingHeader = () => {
   <button type="button" id="filter-btn">Filter</button>
   </div>
   <div id="accounts-container"></div>
+  <div id="agents-container"></div>
   </div>
   `;
   renderToDom('#welcome-title', domString);
@@ -38,11 +39,26 @@ const activeAcounts = (array) => {
   });
 };
 
-const filtereredBusinesses = (array) => {
-  const locationsInNY = array.filter((arr) => arr.addressStateCode === 'NY');
-  console.warn(locationsInNY);
-  activeAcounts(locationsInNY);
-};
+// const filtereredBusinesses = (array) => {
+//   const locationsInNY = array.filter((arr) => arr.addressStateCode === 'NY');
+//   console.warn(locationsInNY);
+//   activeAcounts(locationsInNY);
+// };
+
+const agents = businesses.map((business) => business.purchasingAgent);
+
+agents.forEach((agent) => {
+  let domString = '';
+  domString += `
+    <div>
+      <div> 
+        <h2>Purchasing Agent:</h2>
+      </div>
+      <div>${agent.nameFirst} ${agent.nameLast}</div>
+    </div>
+    `;
+  renderToDom('#agents-container', domString);
+});
 
 // const searchBuisnessForm = () => {
 //   console.warn('Clicked');
@@ -73,16 +89,17 @@ const filtereredBusinesses = (array) => {
 // };
 
 const domEvents = () => {
-  // document.querySelector('#filter-btn').addEventListener('click', filterBuisnessForm);
+  // document.querySelector('#filter-btn').addEventListener('click', filtereredBusinesses);
   // document.querySelector().addEventListener();
 };
 
 const init = () => {
-  // currentBusinesses(businesses);
   greetingHeader();
   domEvents();
-  // activeAcounts(businesses);
-  filtereredBusinesses(businesses);
+  // currentBusinesses(businesses);
+  activeAcounts(businesses);
+  // filtereredBusinesses(businesses);
+  agents();
 };
 
 init();
