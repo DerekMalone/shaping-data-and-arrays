@@ -80,14 +80,14 @@ const filtereredBusinesses = (array) => {
   nyBusinesses(locationsInNY);
 };
 
-const domEvents = () => {
-  // document.querySelector('#filter-btn').addEventListener('click', filtereredBusinesses(array));
-  // document.querySelector().addEventListener();
-};
+// const domEvents = () => {
+//   // document.querySelector('#filter-btn').addEventListener('click', filtereredBusinesses(array));
+//   // document.querySelector().addEventListener();
+// };
 
 const init = () => {
   greetingHeader();
-  domEvents();
+  // domEvents();
   activeAcounts(businesses);
 
   filtereredBusinesses(businesses);
